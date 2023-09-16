@@ -54,7 +54,7 @@ public class Station {
     }
 
     public static ArrayList<Station> readStationsFromFile(String fileName) {
-        Scanner scanner = null;
+        Scanner scanner;
         ArrayList<Station> result = new ArrayList<>();
         try {
             scanner = new Scanner(new File(fileName));
@@ -70,7 +70,7 @@ public class Station {
                 if (!code.matches("[A-Z]*")) break;
 
                 String uic = lineParse[2];
-                if (uic.matches("[78][0-9]*")) break;
+                if (uic.matches("\"[78][0-9]*\"")) break;
 
                 String nameShort = lineParse[3];
                 String nameLong = lineParse[5];
@@ -84,7 +84,7 @@ public class Station {
                 if(!String.valueOf(geoLat).matches("[0-9]*[.]?[0-9]*")) break;
 
                 double geoLng = Double.parseDouble(lineParse[10]);
-                if (!String.valueOf(geoLng).matches("[0-9]*[.]?[0-9]*\"")) break;
+                if (!String.valueOf(geoLng).matches("[0-9]*[.]?[0-9]*")) break;
 
                 result.add(new Station(id, code, uic, nameShort, nameLong, country, type, geoLat, geoLng));
             }
