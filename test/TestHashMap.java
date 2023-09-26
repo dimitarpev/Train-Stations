@@ -1,6 +1,10 @@
 import lists.HashMap;
+import lists.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -104,6 +108,28 @@ public class TestHashMap {
         String key = null;
         AssertionError error = assertThrows(AssertionError.class, () -> map.remove(key));
         assertEquals("The value of key cannot be null", error.getMessage());
+    }
+
+    @Test
+    public void callingKeySetMethodOfHashMapWithTwoPairsReturnsThosePairsKeys() {
+        map.put("k1", "v1");
+        map.put("k2", "v2");
+        Set<String> result = map.keySet();
+        assertEquals(2, result.size());
+        String[] array = result.toArray(new String[2]);
+        assertEquals("k1", array[0]);
+        assertEquals("k2", array[1]);
+    }
+
+    @Test
+    public void callingValuesMethodOfHashMapWithTwoPairsReturnsThosePairsValues() {
+        map.put("k1", "v1");
+        map.put("k2", "v2");
+        Collection<String> result = map.values();
+        assertEquals(2, result.size());
+        String[] array = result.toArray(new String[2]);
+        assertEquals("v1", array[0]);
+        assertEquals("v2", array[1]);
     }
 
 }

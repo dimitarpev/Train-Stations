@@ -1,18 +1,23 @@
 package lists;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 public class HashMap<K,V> implements Map<K,V> {
-    private final int tableSize;
+//    private final int tableSize;
     private LinkedList<Pair<K,V>>[] mapArray;
     private int currentSize = 0;
 
     public HashMap(int tableSize) {
-        this.tableSize = tableSize;
+//        this.tableSize = tableSize;
         mapArray = new LinkedList[tableSize];
     }
 
 
     private int getElementMod(int hashValue){
-        return hashValue % tableSize;
+        return hashValue % mapArray.length;
     }
 
     @Override
@@ -21,7 +26,7 @@ public class HashMap<K,V> implements Map<K,V> {
         assert value != null : "The value of value cannot be null";
 
         int elementPositionInArray = getElementMod(key.hashCode());
-        assert elementPositionInArray < tableSize : "Element position cannot be higher than the array's length";
+        assert elementPositionInArray < mapArray.length : "Element position cannot be higher than the array's length";
 
         //If no key/value pairs have been added to that position, create a new linked list to be able to add one
         if (mapArray[elementPositionInArray] == null){
@@ -99,6 +104,32 @@ public class HashMap<K,V> implements Map<K,V> {
             }
         }
         return null;
+    }
+
+    @Override
+    public Set<K> keySet() {
+        Set<K> result = new HashSet<>();
+        for (int i = 0; i < mapArray.length; i++) {
+            if (mapArray[i] != null){
+                for (int j = 0; j < mapArray[i].size(); j++) {
+                    result.add(mapArray[i].get(j).getKey());
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public Collection<V> values() {
+        Collection<V> result = new ArrayList<>();
+        for (int i = 0; i < mapArray.length; i++) {
+            if (mapArray[i] != null){
+                for (int j = 0; j < mapArray[i].size(); j++) {
+                    result.add(mapArray[i].get(j).getValue());
+                }
+            }
+        }
+        return result;
     }
 
     @Override

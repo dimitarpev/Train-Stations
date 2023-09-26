@@ -140,7 +140,7 @@ public class TestStation {
         assertEquals(266, firstStation.getId());
         assertEquals("HT", firstStation.getCode());
         assertEquals("8400319", firstStation.getUic());
-        assertEquals("\"Den Bosch\"", firstStation.getNameShort());
+        assertEquals("Den Bosch", firstStation.getNameShort());
         assertEquals("'s-Hertogenbosch", firstStation.getNameLong());
         assertEquals("NL", firstStation.getCountry());
         assertEquals("knooppuntIntercitystation", firstStation.getType());

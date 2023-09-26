@@ -1,5 +1,8 @@
 package lists;
 
+import java.util.Collection;
+import java.util.Set;
+
 public interface Map<K,V> {
     /**
      *- adds the (key,value) combination to the map
@@ -21,9 +24,19 @@ public interface Map<K,V> {
      V remove(K key);
 
     /**
+    * - returns the Set of all keys that are in the map
+    * */
+    Set<K> keySet();
+
+    /**
+     * - returns the Collection of all values that are in the map
+     */
+    Collection<V> values();
+
+    /**
      *- returns the number of (key,value) combinations in the map
      */
-     int size();
+    int size();
 
     /**
      *- returns true if the map has no (key,value) combinations

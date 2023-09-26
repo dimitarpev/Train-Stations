@@ -1,10 +1,6 @@
 package lists;
 
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.stream.Stream;
-
 /**
  * Simple List interface
  * defining just a few of the operations available in the

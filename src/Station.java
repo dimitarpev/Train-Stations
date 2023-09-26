@@ -62,8 +62,11 @@ public class Station {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] lineParse = line.split(",");
+                for (int i = 0; i < lineParse.length; i++) {
+                    lineParse[i] = lineParse[i].replace("\"", "").trim();
+                }
 
-
+                //FIXME: if line is wrong the entire reading stops instead of just skipping line
                 int id = Integer.parseInt(lineParse[0]);
 
                 String code = lineParse[1];
@@ -81,10 +84,10 @@ public class Station {
                 String type = lineParse[8];
 
                 double geoLat = Double.parseDouble(lineParse[9]);
-                if(!String.valueOf(geoLat).matches("[0-9]*[.]?[0-9]*")) break;
+                if(!String.valueOf(geoLat).matches("-?[0-9]*[.]?[0-9]*")) break;
 
                 double geoLng = Double.parseDouble(lineParse[10]);
-                if (!String.valueOf(geoLng).matches("[0-9]*[.]?[0-9]*")) break;
+                if (!String.valueOf(geoLng).matches("-?[0-9]*[.]?[0-9]*")) break;
 
                 result.add(new Station(id, code, uic, nameShort, nameLong, country, type, geoLat, geoLng));
             }

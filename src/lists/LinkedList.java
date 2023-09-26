@@ -2,6 +2,7 @@ package lists;
 
 public class LinkedList<T> implements List<T>{
 
+    // FIXME: USE EQUALS EVERYWHERE
     class Node<T> {
         T data;
         Node<T> next;
@@ -69,10 +70,10 @@ public class LinkedList<T> implements List<T>{
         assert element != null : "Element cannot be null";
         Node<T> temp = head;
         if (currentSize == 1){
-            return temp.data == element;
+            return temp.data.equals(element);
         }else if (temp != null){
             while (temp.next != null){
-                if (temp.next.data == element){
+                if (temp.next.data.equals(element)){
                     return true;
                 }
                 temp = temp.next;

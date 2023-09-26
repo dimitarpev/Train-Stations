@@ -25,10 +25,10 @@ public class StationSearch {
         return -1;
     }
 
-    public static Station linearSearch(LinkedList<Station> stations, String searchName){
+    public static Station linearSearch(ArrayList<Station> stations, String searchName){
         for (int i = 0; i < stations.size(); i++) {
             Station station = stations.get(i);
-            if (station.equals(searchName)) return station;
+            if (station.getNameLong().equals(searchName)) return station;
         }
         return null;
     }
