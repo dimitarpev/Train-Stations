@@ -9,15 +9,19 @@ public class HashMap<K,V> implements Map<K,V> {
 //    private final int tableSize;
     private LinkedList<Pair<K,V>>[] mapArray;
     private int currentSize = 0;
+    private int mapCapacity;
+    private int tableSize;
+
 
     public HashMap(int tableSize) {
-//        this.tableSize = tableSize;
+        this.tableSize = tableSize;
+        mapCapacity = 30;
         mapArray = new LinkedList[tableSize];
     }
 
 
     private int getElementMod(int hashValue){
-        return hashValue % mapArray.length;
+        return Math.abs(hashValue % mapArray.length);
     }
 
     @Override
@@ -39,6 +43,10 @@ public class HashMap<K,V> implements Map<K,V> {
         } else {
             // update value of existing key
             updatePairValue(key, value, elementPositionInArray);
+        }
+
+        if (currentSize > mapCapacity) {
+            remap();
         }
 
 
@@ -130,6 +138,25 @@ public class HashMap<K,V> implements Map<K,V> {
             }
         }
         return result;
+    }
+
+    public void remap() {
+        int previousCapacity = mapCapacity;
+        mapCapacity *= 2;
+        tableSize *= 2;
+
+        LinkedList<Pair<K,V>>[] oldList = mapArray;
+        mapArray = new LinkedList[tableSize];
+        currentSize = 0;
+
+        for (int i = 0; i < previousCapacity; i++) {
+            LinkedList<Pair<K, V>> pairs = oldList[i];
+            if (pairs != null) {
+                for (int j = 0; j < pairs.size(); j++) {
+                    put(pairs.get(j).key, pairs.get(j).value);
+                }
+            }
+        }
     }
 
     @Override

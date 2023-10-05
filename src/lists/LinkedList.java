@@ -2,6 +2,7 @@ package lists;
 
 public class LinkedList<T> implements List<T>{
 
+
     // FIXME: USE EQUALS EVERYWHERE
     class Node<T> {
         T data;
@@ -129,7 +130,26 @@ public class LinkedList<T> implements List<T>{
         return node;
     }
 
-    @Override
+    public LinkedList<T> subList(int fromIndex, int toIndex) {
+
+        // TODO: make this an assertion
+        if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException("Invalid indices for sublist");
+        }
+
+        LinkedList<T> sublist = new LinkedList<>();
+        Node<T> current = getNodeOfIndex(fromIndex);
+
+        for (int i = fromIndex; i < toIndex; i++) {
+            sublist.add(current.data);
+            current = current.next;
+        }
+
+        return sublist;
+    }
+
+
+@Override
     public boolean remove(int index) {
         assert index >= 0 : "Index must be a positive number";
         assert index < currentSize : "Index must be in range of the list's length";
