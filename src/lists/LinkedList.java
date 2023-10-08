@@ -131,11 +131,11 @@ public class LinkedList<T> implements List<T>{
     }
 
     public LinkedList<T> subList(int fromIndex, int toIndex) {
-
-        // TODO: make this an assertion
-        if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
-            throw new IndexOutOfBoundsException("Invalid indices for sublist");
-        }
+        assert fromIndex >= 0 && toIndex <= size() && fromIndex <= toIndex : "Indexes must be in range of the list's length";
+//        // TODO: make this an assertion
+//        if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
+//            throw new IndexOutOfBoundsException("Invalid indices for sublist");
+//        }
 
         LinkedList<T> sublist = new LinkedList<>();
         Node<T> current = getNodeOfIndex(fromIndex);

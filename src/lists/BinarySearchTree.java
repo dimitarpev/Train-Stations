@@ -1,13 +1,12 @@
 package lists;
 
+import java.util.Comparator;
+
 public class BinarySearchTree<T extends Comparable<T>> {
     private BinaryTreeNode<T> root;
-    public boolean isEmpty() {
-        return root == null;
-    }
+    private Comparator<T> comparator = Comparator.naturalOrder();
 
     //remove
-
     public BinarySearchTree() {
     }
 
@@ -15,7 +14,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
         add(root);
     }
 
+    public boolean isEmpty() {
+        return root == null;
+    }
+
     public void add(T data) {
+        assert data != null : "Element to add cannot be null";
+
         root = insert(root, data);
     }
 
@@ -35,6 +40,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 
     public boolean contains(T data){
+        assert data != null : "Element to check cannot be null";
+
         return contains(root, data);
     }
 
@@ -50,7 +57,27 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    public BinaryTreeNode<T> get(T data) {
+        assert data != null : "Element to get cannot be null";
+
+        return get(root, data);
+    }
+
+    private BinaryTreeNode<T> get(BinaryTreeNode<T> node, T data) {
+        if (node == null || node.getData().equals(data)) {
+            return node;
+        }
+
+        if (data.compareTo(node.getData()) < 0) {
+            return get(node.getLeftChild(), data);
+        } else {
+            return get(node.getRightChild(), data);
+        }
+    }
+
     public BinaryTreeNode<T> remove(T data) {
+        assert data != null : "Element to remove cannot be null";
+
         root = remove(root, data);
         return root;
     }
@@ -60,7 +87,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return null;
         }
 
-        int compareResult = data.compareTo(node.getData());
+        int compareResult = comparator.compare(data, node.getData());
 
         if (compareResult < 0) {
             node.setLeftChild(remove(node.getLeftChild(), data));
@@ -68,37 +95,25 @@ public class BinarySearchTree<T extends Comparable<T>> {
             node.setRightChild(remove(node.getRightChild(), data));
         } else {
 
-            // 1 child
             if (node.getLeftChild() == null) {
                 return node.getRightChild();
             } else if (node.getRightChild() == null) {
                 return node.getLeftChild();
             }
 
-            //2 children
-            BinaryTreeNode<T> smallestRightNode = findMin(node.getRightChild());
-            node.setData(smallestRightNode.getData());
-            node.setRightChild(remove(node.getRightChild(), smallestRightNode.getData()));
+            BinaryTreeNode<T> largestLeftNode = findMax(node.getLeftChild());
+            node.setData(largestLeftNode.getData());
+            node.setLeftChild(remove(node.getLeftChild(), largestLeftNode.getData()));
         }
 
         return node;
     }
 
-    private BinaryTreeNode<T> findMin(BinaryTreeNode<T> node) {
-        while (node.getLeftChild() != null) {
-            node = node.getLeftChild();
+    private BinaryTreeNode<T> findMax(BinaryTreeNode<T> node) {
+        while (node.getRightChild() != null) {
+            node = node.getRightChild();
         }
         return node;
-    }
-
-
-    //all of the would be nice
-    public void printInOrder(BinaryTreeNode<T> node) {
-        if (node != null) {
-            printInOrder(node.getLeftChild());
-            System.out.printf("%s ", node.getData());
-            printInOrder(node.getRightChild());
-        }
     }
 
     public int size() {

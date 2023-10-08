@@ -15,7 +15,7 @@ public class HashMap<K,V> implements Map<K,V> {
 
     public HashMap(int tableSize) {
         this.tableSize = tableSize;
-        mapCapacity = 30;
+        mapCapacity = tableSize * 3;
         mapArray = new LinkedList[tableSize];
     }
 
@@ -140,8 +140,8 @@ public class HashMap<K,V> implements Map<K,V> {
         return result;
     }
 
-    public void remap() {
-        int previousCapacity = mapCapacity;
+    private void remap() {
+        int previousCapacity = tableSize;
         mapCapacity *= 2;
         tableSize *= 2;
 

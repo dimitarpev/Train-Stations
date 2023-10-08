@@ -210,4 +210,31 @@ public class TestLinkedList {
         assertEquals(elementNew, list.get(0));
     }
 
+    @Test
+    public void creatingASubListOfTheLinkedList() {
+        LinkedList<Character> list = new LinkedList<>();
+        list.add('a');
+        list.add('b');
+        list.add('c');
+        list.add('d');
+        list.add('e');
+        list.add('f');
+        LinkedList<Character> sublist = list.subList(0, 3);
+        assertEquals(3, sublist.size());
+        assertEquals('a', sublist.get(0));
+        assertEquals('b', sublist.get(1));
+        assertEquals('c', sublist.get(2));
+    }
+
+    @Test
+    public void creatingASubListWithIndexesNotInRangeGivesError() {
+        LinkedList<Character> list = new LinkedList<>();
+        list.add('a');
+        list.add('b');
+        list.add('c');
+
+        AssertionError error = assertThrows(AssertionError.class, () ->  list.subList(2, 6));
+        assertEquals("Indexes must be in range of the list's length", error.getMessage());
+    }
+
 }

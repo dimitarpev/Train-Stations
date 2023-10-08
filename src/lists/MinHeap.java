@@ -106,7 +106,6 @@ public class MinHeap<T extends Comparable<T>> {
         sb.append("}");
 
         return sb.toString();
-        //TODO:
     }
 
     public T get(int index) {

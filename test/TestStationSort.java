@@ -28,4 +28,13 @@ public class TestStationSort {
         assertEquals("c", result.get(2).getNameLong());
         assertEquals("d", result.get(3).getNameLong());
     }
+
+    @Test
+    public void mergeSortCorrectlySortsStationsDependingOnTheirName() {
+        LinkedList<Station> result = StationSort.mergeSortStations(stations);
+        assertEquals("a", result.get(0).getNameLong());
+        assertEquals("b", result.get(1).getNameLong());
+        assertEquals("c", result.get(2).getNameLong());
+        assertEquals("d", result.get(3).getNameLong());
+    }
 }

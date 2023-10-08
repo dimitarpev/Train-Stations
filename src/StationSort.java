@@ -51,13 +51,9 @@ public class StationSort {
                 stations.set(stationsIndex++, right.get(rightIndex++));
             }
         }
-
-        // Copy remaining elements from left, if any
         while (leftIndex < left.size()) {
             stations.set(stationsIndex++, left.get(leftIndex++));
         }
-
-        // Copy remaining elements from right, if any
         while (rightIndex < right.size()) {
             stations.set(stationsIndex++, right.get(rightIndex++));
         }

@@ -132,4 +132,13 @@ public class TestHashMap {
         assertEquals("v2", array[1]);
     }
 
+    @Test
+    public void addingElementsToHashMapOfInitialSize3UntilRemapLimitIsReached() {
+        HashMap<Integer, String> littleMap = new HashMap<>(3);
+        for (int i = 0; i < 11; i++) {
+            littleMap.put(i, "v"+i);
+        }
+        assertEquals(11, littleMap.size());
+    }
+
 }
