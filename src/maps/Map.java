@@ -1,4 +1,4 @@
-package lists;
+package maps;
 
 import java.util.Collection;
 import java.util.Set;

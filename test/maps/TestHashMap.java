@@ -1,5 +1,6 @@
-import lists.HashMap;
-import lists.List;
+package maps;
+
+import maps.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,10 @@
+package utils;
+
+import model.Station;
+import model.TrainManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.StationSearch;
 
 import static org.junit.jupiter.api.Assertions.*;
 

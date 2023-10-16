@@ -1,4 +1,4 @@
-package lists;
+package trees;
 
 public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
 
@@ -175,14 +175,13 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     }
 
     private boolean isBalanced(BinaryTreeNode<T> node) {
+
         if (node == null) {
             return true;
         }
 
         int balance = getBalance(node);
-        if (balance < -1 || balance > 1) {
-            return false;
-        }
+        assert balance > -1 || balance < 1 : "Tree should have been balanced, but its not";
 
         return isBalanced(node.getLeftChild()) && isBalanced(node.getRightChild());
     }

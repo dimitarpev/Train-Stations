@@ -1,4 +1,6 @@
-package lists;
+package maps;
+
+import lists.LinkedList;
 
 import java.util.ArrayList;
 import java.util.Collection;

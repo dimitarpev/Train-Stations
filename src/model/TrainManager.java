@@ -1,7 +1,6 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+package model;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TrainManager {
 
@@ -10,7 +9,7 @@ public class TrainManager {
 
     public TrainManager() {
         this.stations = Station.readStationsFromFile("resources/stations.csv");
-        this.connections = Connection.readConnectionsFromFile("resources/tracks.csv");
+        this.connections = Connection.readConnectionsFromFile("resources/tracks.csv", stations);
     }
 
     public ArrayList<Station> getStations() {

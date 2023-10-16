@@ -1,4 +1,4 @@
-package lists;
+package maps;
 
 public class Pair<K,V> {
 

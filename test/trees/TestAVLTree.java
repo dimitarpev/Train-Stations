@@ -1,5 +1,7 @@
-import lists.AVLTree;
-import lists.BinaryTreeNode;
+package trees;
+
+import trees.AVLTree;
+import trees.BinaryTreeNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

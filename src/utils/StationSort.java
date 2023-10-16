@@ -1,8 +1,7 @@
-import lists.LinkedList;
+package utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import lists.LinkedList;
+import model.Station;
 
 public class StationSort {
     public static LinkedList<Station> insertionSortStations(LinkedList<Station> stations) {

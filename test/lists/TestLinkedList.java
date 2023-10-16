@@ -1,3 +1,5 @@
+package lists;
+
 import lists.LinkedList;
 import org.junit.jupiter.api.Test;
 

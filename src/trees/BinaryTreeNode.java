@@ -1,4 +1,4 @@
-package lists;
+package trees;
 
 public class BinaryTreeNode<T extends Comparable<T>> {
     private T data;

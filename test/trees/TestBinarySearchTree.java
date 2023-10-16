@@ -1,5 +1,7 @@
-import lists.BinarySearchTree;
-import lists.BinaryTreeNode;
+package trees;
+
+import trees.BinarySearchTree;
+import trees.BinaryTreeNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -162,5 +164,7 @@ public class TestBinarySearchTree {
         BinaryTreeNode<String> node = tree.get("A");
         assertEquals(-1, node.getDepth("F"));
     }
+
+
 
 }

@@ -1,4 +1,4 @@
-package lists;
+package trees;
 
 import java.util.Comparator;
 

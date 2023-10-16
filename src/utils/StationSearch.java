@@ -1,4 +1,6 @@
-import lists.LinkedList;
+package utils;
+
+import model.Station;
 
 import java.util.ArrayList;
 
