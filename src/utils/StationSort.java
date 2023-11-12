@@ -1,10 +1,11 @@
 package utils;
 
-import lists.LinkedList;
 import model.Station;
 
+import java.util.ArrayList;
+
 public class StationSort {
-    public static LinkedList<Station> insertionSortStations(LinkedList<Station> stations) {
+    public static ArrayList<Station> insertionSortStations(ArrayList<Station> stations) {
         int index = 1;
         int newIndex;
         Station element;
@@ -21,14 +22,15 @@ public class StationSort {
         return stations;
     }
 
-    public static LinkedList<Station> mergeSortStations(LinkedList<Station> stations) {
+    public static ArrayList<Station> mergeSortStations(ArrayList<Station> stations) {
         if (stations.size() <= 1) {
             return stations;
         }
 
         int middle = stations.size() / 2;
-        LinkedList<Station> left = stations.subList(0, middle);
-        LinkedList<Station> right = stations.subList(middle, stations.size());
+
+        ArrayList<Station> left = new ArrayList<>(stations.subList(0, middle));
+        ArrayList<Station> right = new ArrayList<>(stations.subList(middle, stations.size()));
 
         left = mergeSortStations(left);
         right = mergeSortStations(right);
@@ -38,7 +40,7 @@ public class StationSort {
         return stations;
     }
 
-    private static void merge(LinkedList<Station> left, LinkedList<Station> right, LinkedList<Station> stations) {
+    private static void merge(ArrayList<Station> left, ArrayList<Station> right, ArrayList<Station> stations) {
         int leftIndex = 0;
         int rightIndex = 0;
         int stationsIndex = 0;

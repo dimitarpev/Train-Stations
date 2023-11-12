@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HashMap<K,V> implements Map<K,V> {
-//    private final int tableSize;
     private LinkedList<Pair<K,V>>[] mapArray;
     private int currentSize = 0;
     private int mapCapacity;
@@ -129,6 +128,23 @@ public class HashMap<K,V> implements Map<K,V> {
         return result;
     }
 
+    public boolean contains(K key){
+        assert key != null : "The value of key cannot be null";
+
+        int elementPositionInArray = getElementMod(key.hashCode());
+        assert elementPositionInArray < mapArray.length : "Element position cannot be higher than the array's length";
+        LinkedList<Pair<K, V>> currentList = mapArray[elementPositionInArray];
+        if (currentList != null) {
+            for (int i = 0; i < currentList.size(); i++) {
+                Pair<K, V> pair = currentList.get(i);
+                if (pair.getKey().equals(key)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public Collection<V> values() {
         Collection<V> result = new ArrayList<>();
@@ -174,5 +190,12 @@ public class HashMap<K,V> implements Map<K,V> {
             }
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "HashMap{" +
+                "currentSize=" + currentSize +
+                '}';
     }
 }

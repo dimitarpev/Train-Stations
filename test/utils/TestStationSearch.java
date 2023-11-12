@@ -17,14 +17,14 @@ public class TestStationSearch {
 
     @Test
     public void searchingForStationDeventerUsingBinarySearchReturnsItsIndexInTheArrayDifferentThanNegativeOneWhichMeansNotFound() {
-        int i = StationSearch.binarySearch(tm.getStations(), "Deventer");
-        assertNotEquals(-1, i);
+        Station deventer = StationSearch.binarySearch(tm.getStations(), "Deventer");
+        assertEquals("Deventer", deventer.getNameLong());
     }
 
     @Test
     public void searchingForStationThatDoesNotExistUsingBinarySearchReturnsNegative1() {
-        int i = StationSearch.binarySearch(tm.getStations(), "oisfhihos");
-        assertEquals(-1, i);
+        Station nonExistent = StationSearch.binarySearch(tm.getStations(), "oisfhihos");
+        assertNull(nonExistent);
     }
 
     @Test

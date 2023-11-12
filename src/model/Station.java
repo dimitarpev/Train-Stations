@@ -17,11 +17,9 @@ public class Station {
     private final String type;
     private final double geoLat;
     private final double geoLng;
-    private List<Station> connections;
 
     public Station(int id, String code, String uic, String nameShort, String nameLong, String country, String type, double geoLat, double geoLng) {
         assert id >= 0 : "Please provide a non-negative id";
-        //Use setters so assertions dont repeat
         this.id = id;
 
         assert code != null : "Code cannot be null";
@@ -68,7 +66,6 @@ public class Station {
                     lineParse[i] = lineParse[i].replace("\"", "").trim();
                 }
 
-                //FIXME: if line is wrong the entire reading stops instead of just skipping line
                 int id = Integer.parseInt(lineParse[0]);
 
                 String code = lineParse[1];
@@ -136,5 +133,17 @@ public class Station {
 
     public double getGeoLng() {
         return geoLng;
+    }
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "code='" + code + '\'' +
+                ", nameLong='" + nameLong + '\'' +
+                ", country='" + country + '\'' +
+                ", type='" + type + '\'' +
+                ", geoLat=" + geoLat +
+                ", geoLng=" + geoLng +
+                '}';
     }
 }

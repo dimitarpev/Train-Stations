@@ -165,6 +165,19 @@ public class TestBinarySearchTree {
         assertEquals(-1, node.getDepth("F"));
     }
 
-
+    @Test
+    public void generatingWebGraphVizOutputOfATree() {
+        String webGraphViz = tree.toWebGraphViz();
+        assertEquals("digraph G {\n" +
+                "\"D\" -> \"B\"\n" +
+                "\"B\" -> \"A\"\n" +
+                "\"B\" -> \"C\"\n" +
+                "\"D\" -> \"F\"\n" +
+                "\"F\" -> \"E\"\n" +
+                "\"F\" -> \"G\"\n" +
+                "}", webGraphViz);
+        String toString = tree.toString();
+        assertTrue(toString.contains("7"));
+    }
 
 }

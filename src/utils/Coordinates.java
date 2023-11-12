@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Objects;
+
 public class Coordinates {
 
     private final String code;
@@ -13,6 +15,21 @@ public class Coordinates {
         this.code = code;
         this.lat = lat;
         this.lng = lng;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Coordinates that = (Coordinates) obj;
+        return Double.compare(that.lat, lat) == 0 &&
+                Double.compare(that.lng, lng) == 0 &&
+                Objects.equals(code, that.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lat, lng, code);
     }
 
     public double getLat() {
@@ -29,10 +46,6 @@ public class Coordinates {
 
     public int getFCost() {
         return gCost + hCost;
-    }
-
-    public int getHCost() {
-        return hCost;
     }
 
     public int getGCost() {
@@ -53,6 +66,16 @@ public class Coordinates {
 
     public void setParent(Coordinates parent) {
         this.parent = parent;
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinates{" +
+                "code='" + code + '\'' +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                ", gCost=" + gCost +
+                '}';
     }
 }
 

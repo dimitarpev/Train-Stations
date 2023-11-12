@@ -137,4 +137,23 @@ public class TestAVLTree {
         BinaryTreeNode<Integer> node = null;
         assertEquals(0, tree.getBalance(node));
     }
+
+    @Test
+    public void checkingThatTreeIsNotEmpty() {
+        assertFalse(treeInt.isEmpty());
+    }
+
+
+    @Test
+    public void toStringOfAnAVLTree() {
+        AVLTree<Integer> tree = new AVLTree<>();
+        tree.add(10);
+        String toString = tree.toString();
+        assertTrue(toString.contains("10"));
+    }
+
+    @Test
+    public void generatingWebGraphVizOutputOfATree() {
+        System.out.println(treeInt.toWebGraphViz());
+    }
 }

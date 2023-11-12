@@ -27,6 +27,8 @@ public class TestHashMap {
         String value = "v1";
         assertEquals(value, map.put(key, value));
         assertFalse(map.isEmpty());
+        String toString = map.toString();
+        assertTrue(toString.contains("1"));
     }
 
     @Test
@@ -140,6 +142,23 @@ public class TestHashMap {
             littleMap.put(i, "v"+i);
         }
         assertEquals(11, littleMap.size());
+    }
+
+    @Test
+    public void checkingIfHashMapContainsKeyAndItDoesReturnsTrue() {
+        map.put("k1", "v1");
+        assertTrue(map.contains("k1"));
+    }
+
+    @Test
+    public void checkingIfEmptyHashMapContainsKeyReturnsFalse() {
+        assertFalse(map.contains("k1"));
+    }
+
+    @Test
+    public void tryingToCheckIfHashMapContainsKeyWithANullKeyGivesError() {
+        AssertionError error = assertThrows(AssertionError.class, () -> map.contains(null));
+        assertEquals("The value of key cannot be null", error.getMessage());
     }
 
 }

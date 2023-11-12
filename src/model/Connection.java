@@ -28,11 +28,14 @@ public class Connection {
                 String[] lineParse = line.split(",");
 
                 String station1Code = lineParse[0];
+                if (!station1Code.matches("[a-z]*")) break;
                 String station2Code = lineParse[1];
+                if (!station2Code.matches("[a-z]*")) break;
                 Station station1 = getStationWithCode(stations, station1Code);
                 Station station2 = getStationWithCode(stations, station2Code);
 
                 int distance = Integer.parseInt(lineParse[2]);
+                if (!String.valueOf(distance).matches("[0-9]*")) break;
 
                 result.add(new Connection(station1, station2, distance));
             }

@@ -1,6 +1,5 @@
 package lists;
 
-import lists.LinkedList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +11,7 @@ public class TestLinkedList {
         LinkedList<String> list = new LinkedList<>();
         list.add("element1");
         assertEquals("element1", list.get(0));
+
     }
 
     @Test
@@ -21,6 +21,8 @@ public class TestLinkedList {
         list.add("element2");
         assertEquals("element1", list.get(0));
         assertEquals("element2", list.get(1));
+        String toString = list.toString();
+        assertTrue(toString.contains("2")); // current size is 2
     }
 
     @Test

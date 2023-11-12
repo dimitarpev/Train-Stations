@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class StationSearch {
 
-    public static int binarySearch(ArrayList<Station> stations, String searchName){
+    public static Station binarySearch(ArrayList<Station> stations, String searchName){
         int left = 0;
         int right = stations.size() - 1;
 
@@ -17,14 +17,14 @@ public class StationSearch {
             int compareResult = searchName.compareTo(middleName);
 
             if (compareResult == 0) {
-                return middle;
+                return stations.get(middle);
             } else if (compareResult < 0) {
                 right = middle - 1;
             } else {
                 left = middle + 1;
             }
         }
-        return -1;
+        return null;
     }
 
     public static Station linearSearch(ArrayList<Station> stations, String searchName){

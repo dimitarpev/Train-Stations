@@ -2,7 +2,6 @@ package trees;
 
 public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
 
-    // NO DUPLICATE VALUES - if I give example in documentation i can get extra points (2,2,2)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private BinaryTreeNode<T> root;
 
     @Override
@@ -85,8 +84,6 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         // Perform balancing
         return balance(node);
     }
-
-    // Existing code...
 
     private BinaryTreeNode<T> findMin(BinaryTreeNode<T> node) {
         while (node.getLeftChild() != null) {
@@ -198,5 +195,14 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         return 1 + size(node.getLeftChild()) + size(node.getRightChild());
     }
 
+    public boolean isEmpty(){
+        return root == null;
+    }
 
+    @Override
+    public String toString() {
+        return "AVLTree{" +
+                "root=" + root.getData() +
+                '}';
+    }
 }

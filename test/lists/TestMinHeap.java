@@ -18,6 +18,8 @@ public class TestMinHeap {
     public void addFirstElementToMinHeap() {
         heap.add(13);
         assertEquals(13, heap.peek());
+        String toString = heap.toString();
+        assertTrue(toString.contains("13"));
     }
 
     @Test

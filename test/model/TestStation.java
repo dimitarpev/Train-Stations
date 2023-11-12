@@ -14,6 +14,7 @@ public class TestStation {
     @BeforeEach
     public void createDeventerStation(){
         deventer = new Station(100, "DEV", "123456", "Deventer", "Deventer", "NL", "station", 1, 1);
+        assertTrue(deventer.toString().contains("DEV"));
     }
 
     @Test
@@ -29,6 +30,7 @@ public class TestStation {
         assertEquals("f", s.getType());
         assertEquals(1, s.getGeoLat(), 0.00001);
         assertEquals(2, s.getGeoLng(), 0.00001);
+        assertTrue(deventer.toString().contains("a"));
     }
 
     @Test

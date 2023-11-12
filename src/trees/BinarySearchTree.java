@@ -116,6 +116,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
+    public String toWebGraphViz() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("digraph G {\n");
+
+        generateWebGraphViz(root, sb);
+
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    private void generateWebGraphViz(BinaryTreeNode<T> node, StringBuilder sb) {
+        if (node != null) {
+            if (node.getLeftChild() != null) {
+                sb.append("\"" + node.getData() + "\" -> \"" + node.getLeftChild().getData() + "\"\n");
+                generateWebGraphViz(node.getLeftChild(), sb);
+            }
+
+            if (node.getRightChild() != null) {
+                sb.append("\"" + node.getData() + "\" -> \"" + node.getRightChild().getData() + "\"\n");
+                generateWebGraphViz(node.getRightChild(), sb);
+            }
+        }
+    }
+
     public int size() {
         return size(root);
     }
@@ -125,5 +150,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return 0;
         }
         return 1 + size(node.getLeftChild()) + size(node.getRightChild());
+    }
+
+    @Override
+    public String toString() {
+        return "BinarySearchTree{" +
+                "root=" + root +
+                "size=" + size() +
+                '}';
     }
 }

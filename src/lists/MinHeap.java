@@ -5,14 +5,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class MinHeap<T extends Comparable<T>> {
-//    private int size;
-//    private T[] array;
     private ArrayList<T> items;
     private Comparator<T> comparator;
 
     public MinHeap () {
-//        this.size = 0;
-//        this.array = (T[]) Array.newInstance(clazz, initialSize);
         this.items = new ArrayList<>();
         comparator = Comparator.naturalOrder();
     }
@@ -126,37 +122,17 @@ public class MinHeap<T extends Comparable<T>> {
     public boolean isEmpty() {
         return items.isEmpty();
     }
-//    public void push(T data) {
-//        if (size==array.length) {
-//            remap();
-//        }
-//        array[size]=data;
-//        percolateUp(size);
-//        size++;
-//    }
-//
-//    public T pop() {
-//        if (isEmpty()){
-//            return null;
-//        }
-//        // store the root (smallest) value
-//        T result = array[0];
-//        //Find the last element
-//        size--;
-//        //Replace the root with the last element
-//        array[0] = array[size];
-//        // Check if it should move down
-//        percolateDown(0);
-//        // Return the original root value
 
-//        return result;
-
-//    }
-
-//    public Object[] getObjects() {
-//        return new Object[5];
-//    }
-
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("MinHeap{");
+        for (T item : items){
+            result.append(item);
+            result.append(", ");
+        }
+        result.append('}');
+        return result.toString();
+    }
 
 
 }

@@ -13,7 +13,6 @@ public class BinaryTreeNode<T extends Comparable<T>> {
         this.height = 1;
     }
 
-    //is leaf?
     public boolean isLeaf() {
         return leftChild == null && rightChild == null;
     }
